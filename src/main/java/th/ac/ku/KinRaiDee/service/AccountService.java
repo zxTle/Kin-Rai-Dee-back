@@ -13,7 +13,6 @@ import java.util.concurrent.ExecutionException;
 
 @Service
 public class AccountService {
-    private int id = 0;
 
     public String signupAccount(Account account) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
