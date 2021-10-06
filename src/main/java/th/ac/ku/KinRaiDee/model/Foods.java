@@ -1,6 +1,7 @@
 package th.ac.ku.KinRaiDee.model;
 
 public class Foods {
+    private String foodId;
     private String name;
     private String type;
     private String category;
@@ -10,6 +11,13 @@ public class Foods {
     private int score;
     private String img_path;
 
+    public String getFoodId() {
+        return foodId;
+    }
+
+    public void setFoodId(String foodId) {
+        this.foodId = foodId;
+    }
 
     public String getName() {
         return name;

@@ -14,7 +14,7 @@ import java.util.concurrent.ExecutionException;
 @Service
 public class AccountService {
 
-    public String signupAccount(Account account) throws ExecutionException, InterruptedException {
+    public String create_editAccount(Account account) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
         account.setUserId("userId"+getAccAll().size());
         ApiFuture<WriteResult> collectionAccount = dbFirestore.collection("accounts").document(account.getUserId()).set(account);
@@ -27,7 +27,7 @@ public class AccountService {
         Firestore dbFirestore = FirestoreClient.getFirestore();
         ApiFuture<QuerySnapshot> allDoc = dbFirestore.collection("accounts").get();
         List<QueryDocumentSnapshot> acc = allDoc.get().getDocuments();
-        for (QueryDocumentSnapshot docs : acc){
+        for (DocumentSnapshot docs : acc){
             accounts.add(docs.toObject(Account.class));
         }
         return accounts;

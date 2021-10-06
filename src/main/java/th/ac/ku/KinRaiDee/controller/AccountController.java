@@ -17,7 +17,7 @@ public class AccountController {
 
     @PostMapping("/accounts")
     public String setAccount(@RequestBody Account account) throws ExecutionException, InterruptedException {
-        return accountService.signupAccount(account);
+        return accountService.create_editAccount(account);
     }
 
     @GetMapping("/accounts")
@@ -32,6 +32,6 @@ public class AccountController {
 
     @PutMapping("/accounts")
     public String updateAccount(@RequestBody Account account) throws ExecutionException, InterruptedException {
-        return accountService.signupAccount(account);
+        return accountService.create_editAccount(account);
     }
 }
