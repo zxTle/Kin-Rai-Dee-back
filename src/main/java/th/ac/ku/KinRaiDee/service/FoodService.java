@@ -2,7 +2,9 @@ package th.ac.ku.KinRaiDee.service;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
+import com.google.cloud.storage.Bucket;
 import com.google.firebase.cloud.FirestoreClient;
+import com.google.firebase.cloud.StorageClient;
 import org.springframework.stereotype.Service;
 import th.ac.ku.KinRaiDee.model.Account;
 import th.ac.ku.KinRaiDee.model.Foods;
@@ -15,8 +17,7 @@ import java.util.concurrent.ExecutionException;
 public class FoodService {
     public String create_editFoods(Foods foods) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        foods.setFoodId("foodId"+getFoodAll().size());
-        ApiFuture<WriteResult> collectionFood = dbFirestore.collection("foods").document(foods.getFoodId()).set(foods);
+        ApiFuture<WriteResult> collectionFood = dbFirestore.collection("foods").document(foods.getName()).set(foods);
         return  collectionFood.get().getUpdateTime().toString();
     }
 
@@ -65,9 +66,9 @@ public class FoodService {
     }
 
 
-    public Foods getFood(String foodId) throws ExecutionException, InterruptedException {
+    public Foods getFood(String foodName) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        DocumentReference docRef = dbFirestore.collection("foods").document(foodId);
+        DocumentReference docRef = dbFirestore.collection("foods").document(foodName);
 
         ApiFuture<DocumentSnapshot> docs = docRef.get();
 

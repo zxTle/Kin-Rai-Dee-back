@@ -26,12 +26,12 @@ public class FoodController {
     public List<Foods> getAllFoods() throws ExecutionException, InterruptedException {
         return foodService.getFoodAll();
     }
-    @GetMapping("/foods/id/{foodId}")
-    public Foods getFood(@PathVariable String foodId) throws ExecutionException, InterruptedException {
-        return foodService.getFood(foodId);
+    @GetMapping("/foods/{foodName}")
+    public Foods getFood(@PathVariable String foodName) throws ExecutionException, InterruptedException {
+        return foodService.getFood(foodName);
     }
 
-    @GetMapping("/foods/{type}")
+    @GetMapping("/foods/type/{type}")
     public List<Foods> getFoodByType(@PathVariable String type) throws ExecutionException, InterruptedException {
         return foodService.getFoodByType(type);
     }
