@@ -3,6 +3,9 @@ package th.ac.ku.KinRaiDee.service;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.UserRecord;
 import com.google.firebase.cloud.FirestoreClient;
 import org.springframework.stereotype.Service;
 import th.ac.ku.KinRaiDee.model.Account;
@@ -14,9 +17,14 @@ import java.util.concurrent.ExecutionException;
 @Service
 public class AccountService {
 
-    public String create_editAccount(Account account) throws ExecutionException, InterruptedException {
+    public String create_editAccount(Account account) throws ExecutionException, InterruptedException, FirebaseAuthException {
+        UserRecord.CreateRequest request = new UserRecord.CreateRequest()
+                .setEmail(account.getEmail())
+                .setPassword(account.getPassword())
+                .setEmailVerified(false);
+        UserRecord userRecord = FirebaseAuth.getInstance().createUser(request);
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        account.setUserId("userId"+getAccAll().size());
+        account.setUserId(userRecord.getUid());
         ApiFuture<WriteResult> collectionAccount = dbFirestore.collection("accounts").document(account.getUserId()).set(account);
         return  collectionAccount.get().getUpdateTime().toString();
 

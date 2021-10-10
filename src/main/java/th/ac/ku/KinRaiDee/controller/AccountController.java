@@ -1,6 +1,7 @@
 package th.ac.ku.KinRaiDee.controller;
 
 
+import com.google.firebase.auth.FirebaseAuthException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import th.ac.ku.KinRaiDee.model.Account;
@@ -16,7 +17,7 @@ public class AccountController {
     private AccountService accountService;
 
     @PostMapping("/accounts")
-    public String setAccount(@RequestBody Account account) throws ExecutionException, InterruptedException {
+    public String setAccount(@RequestBody Account account) throws ExecutionException, InterruptedException, FirebaseAuthException {
         return accountService.create_editAccount(account);
     }
 
@@ -31,7 +32,7 @@ public class AccountController {
     }
 
     @PutMapping("/accounts")
-    public String updateAccount(@RequestBody Account account) throws ExecutionException, InterruptedException {
+    public String updateAccount(@RequestBody Account account) throws ExecutionException, InterruptedException, FirebaseAuthException {
         return accountService.create_editAccount(account);
     }
 }
