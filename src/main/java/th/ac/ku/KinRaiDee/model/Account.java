@@ -10,7 +10,6 @@ import java.util.Date;
 
 public class Account {
     private String userId;
-    private String username;
     private String password;
     private String email;
     private String name;
@@ -24,14 +23,6 @@ public class Account {
 
     public void setUserId(String userId) {
         this.userId = userId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {

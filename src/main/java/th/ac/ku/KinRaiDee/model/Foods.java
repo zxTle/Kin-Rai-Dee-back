@@ -10,7 +10,6 @@ public class Foods {
     private int score;
     private String img_path;
 
-
     public String getName() {
         return name;
     }
