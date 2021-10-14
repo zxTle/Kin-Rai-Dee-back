@@ -27,7 +27,6 @@ public class AccountService {
         account.setUserId(userRecord.getUid());
         ApiFuture<WriteResult> collectionAccount = dbFirestore.collection("accounts").document(account.getUserId()).set(account);
         return  collectionAccount.get().getUpdateTime().toString();
-
     }
 
     public List<Account> getAccAll() throws ExecutionException, InterruptedException {

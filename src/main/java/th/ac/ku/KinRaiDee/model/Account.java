@@ -1,7 +1,5 @@
 package th.ac.ku.KinRaiDee.model;
 
-
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.cloud.firestore.annotation.DocumentId;
 import th.ac.ku.KinRaiDee.service.AccountService;
