@@ -3,19 +3,35 @@ package th.ac.ku.KinRaiDee.model;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.google.cloud.firestore.annotation.DocumentId;
-import th.ac.ku.KinRaiDee.service.AccountService;
 
 import java.util.Date;
 
 public class Account {
     private String userId;
+    private String username;
     private String password;
     private String email;
     private String name;
     private String surName;
     @JsonFormat(pattern = "dd-MM-yyyy")
     private Date birthDay;
+    private String roles;
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getUserId() {
         return userId;

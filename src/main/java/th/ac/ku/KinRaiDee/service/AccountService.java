@@ -23,6 +23,7 @@ public class AccountService {
                 .setPassword(account.getPassword())
                 .setEmailVerified(false);
         UserRecord userRecord = FirebaseAuth.getInstance().createUser(request);
+        account.setUserId(userRecord.getUid());
         Firestore dbFirestore = FirestoreClient.getFirestore();
         account.setUserId(userRecord.getUid());
         ApiFuture<WriteResult> collectionAccount = dbFirestore.collection("accounts").document(account.getUserId()).set(account);
