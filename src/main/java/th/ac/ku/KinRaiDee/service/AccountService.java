@@ -18,6 +18,7 @@ import java.util.concurrent.ExecutionException;
 public class AccountService {
 
     public String create_editAccount(Account account) throws ExecutionException, InterruptedException, FirebaseAuthException {
+        account.setRoles("user");
         UserRecord.CreateRequest request = new UserRecord.CreateRequest()
                 .setEmail(account.getEmail())
                 .setPassword(account.getPassword())
