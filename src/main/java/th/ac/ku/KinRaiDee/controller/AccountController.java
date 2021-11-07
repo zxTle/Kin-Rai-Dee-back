@@ -18,7 +18,7 @@ public class    AccountController {
 
     @PostMapping("/accounts")
     public String setAccount(@RequestBody Account account) throws ExecutionException, InterruptedException, FirebaseAuthException {
-        return accountService.create_editAccount(account);
+        return accountService.createAccount(account);
     }
 
     @GetMapping("/accounts")
@@ -33,6 +33,6 @@ public class    AccountController {
 
     @PutMapping("/accounts")
     public String updateAccount(@RequestBody Account account) throws ExecutionException, InterruptedException, FirebaseAuthException {
-        return accountService.create_editAccount(account);
+        return accountService.updateAccount(account);
     }
 }

@@ -17,7 +17,7 @@ import java.util.concurrent.ExecutionException;
 @Service
 public class AccountService {
 
-    public String create_editAccount(Account account) throws ExecutionException, InterruptedException, FirebaseAuthException {
+    public String createAccount(Account account) throws ExecutionException, InterruptedException, FirebaseAuthException {
         account.setRoles("user");
         UserRecord.CreateRequest request = new UserRecord.CreateRequest()
                 .setEmail(account.getEmail())
@@ -60,6 +60,10 @@ public class AccountService {
             return null;
         }
     }
-
+    public String updateAccount(Account account) throws ExecutionException, InterruptedException, FirebaseAuthException {
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        ApiFuture<WriteResult> collectionAccount = dbFirestore.collection("accounts").document(account.getUserId()).set(account);
+        return  collectionAccount.get().getUpdateTime().toString();
+    }
     //Delete Now same Code Post but add String paremeter
 }
