@@ -2,14 +2,17 @@ package th.ac.ku.KinRaiDee.model;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.google.cloud.Timestamp;
+
+import java.util.Date;
+
 
 public class History {
     private String historyId;
     private String userId;
     private String foodId;
-    @JsonFormat(pattern = "dd-MM-yyyy")
-    private Timestamp timestamp;
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss",timezone="Asia/Bangkok")
+    private Date timestamp = new Date();
+
 
     public String getHistoryId() {
         return historyId;
@@ -35,11 +38,11 @@ public class History {
         this.foodId = foodId;
     }
 
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
+    public Date getTimestamp() {
+        return timestamp;}
 
-    public void setTimestamp(Timestamp timestamp) {
+
+    public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 }

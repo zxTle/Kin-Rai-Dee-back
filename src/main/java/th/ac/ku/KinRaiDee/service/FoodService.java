@@ -2,11 +2,11 @@ package th.ac.ku.KinRaiDee.service;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
-import com.google.cloud.storage.Bucket;
+
 import com.google.firebase.cloud.FirestoreClient;
-import com.google.firebase.cloud.StorageClient;
+
 import org.springframework.stereotype.Service;
-import th.ac.ku.KinRaiDee.model.Account;
+
 import th.ac.ku.KinRaiDee.model.Foods;
 
 import java.util.ArrayList;
